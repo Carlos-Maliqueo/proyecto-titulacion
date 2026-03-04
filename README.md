@@ -72,7 +72,7 @@ The API and database will start automatically
 
 --- 
 
-## 🐳 Core Features
+## 📊 Core Features
 
 - Automated XML ingestion from external source
 - ETL processing pipeline
