@@ -96,11 +96,15 @@ The API and database will start automatically
 ---
 
 ## 🖼️ System Architecture Diagram
-
+![Architecture](docs/arquitectura_conceptual.png)
+![Architecture](docs/arquitectura_c4_contenedores.png)
 
 ---
 
 ## 📊 Dashboard Preview
+![Dashboard](docs/pbi_pagina_ventas.png)
+![Dashboard](docs/pbi_pagina_dq.png)
+![Dashboard](docs/pbi_pagina_ops.png)
 
 ---
 
