@@ -85,3 +85,36 @@ The API and database will start automatically
 
 ---
 
+## 📈 Impact & Engineering Value
+
+- Automation of DTE operational workflows
+- Significant reduction of manual data handling
+- Improved data quality and traceability
+- Structured data ready for business analytics
+- Scalable architecture following Data Engineering best practices
+
+---
+
+## 🖼️ System Architecture Diagram
+
+
+---
+
+## 📊 Dashboard Preview
+
+---
+
+## 🔐 Data Quality & Governance
+- Structured RAW → STAGE → CURATED pipeline
+- Controlled transformation logic
+- Reprocessing safety (idempotent ETL)
+- Versioned database schema (Alembic migrations)
+
+---
+## 👨‍💻 Author
+Carlos Maliqueo
+Civil Engineer in Computer Science & Telecommunications
+Universidad Diego Portales
+
+🔗 LinkedIn: https://linkedin.com/in/carlos-maliqueo-quijano-20b3792a9
+🔗 GitHub: https://github.com/Carlos-Maliqueo
