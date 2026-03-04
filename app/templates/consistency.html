@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  {% macro clp(v) -%}
+    {%- if v is not none -%}{{ "{:,.0f}".format(v|float).replace(",", ".") }}{%- else -%}-{% endif -%}
+  {%- endmacro %}
+
+  <header class="page-header page-header--center">
+    <h2 class="page-title">Control de Consistencia</h2>
+  </header>
+
+  <!-- KPIs (usa estilo de card para verse igual a las secciones de abajo) -->
+  <div class="kpis">
+    <!-- Archivos -->
+    <div class="kpi card">
+      <div class="kpi__label">Archivos: {{ clp(r.files.total) }}</div>
+      <div class="kpi__meta">Con encabezados: {{ clp(r.files.with_headers) }}</strong></div>
+    </div>
+
+    <!-- Headers -->
+    <div class="kpi card">
+      <div class="kpi__label">Encabezados: {{ clp(r.headers.total) }}</div>
+      <div class="kpi__meta">Sin detalles: {{ clp(r.headers.without_details) }}</strong></div>
+    </div>
+
+    <!-- Detalles -->
+    <div class="kpi card">
+      <div class="kpi__label">Detalles: {{ clp(r.details.total) }}</div>
+      <div class="kpi__meta">Órdenes huérfanas: {{ clp(r.details.orphans) }}</strong></div>
+    </div>
+
+    <!-- DQ total -->
+    <!--<div class="kpi card">
+      <div class="kpi__label">DQ — Violaciones (total): {{ clp(r.dq.violations_total) }}</div>
+      <div class="kpi__meta">Ir a <a href="/dq/summary">Resumen</a> o <a href="/dq/violations">Listado</a></div>
+    </div>
+    -->
+  </div>
+
+  <!-- GRID: fila 1 con dos columnas; fila 2 full-width -->
+  <div class="grid grid--2" style="margin-top:12px">
+    <!-- Col 1: Duplicados -->
+    <div class="card">
+      <h3 style="margin-top:0">Headers duplicados</h3>
+      <p>Grupos duplicados: <strong>{{ clp(r.headers.duplicate_groups_count) }}</strong></p>
+      {% if r.headers.duplicate_groups %}
+        <table class="table">
+          <thead>
+            <tr><th>Tipo</th><th>Folio</th><th>RUT Emisor</th><th>Repeticiones</th></tr>
+          </thead>
+          <tbody>
+            {% for g in r.headers.duplicate_groups %}
+              <tr>
+                <td>{{ g.tipo_dte }}</td>
+                <td>{{ g.folio }}</td>
+                <td>{{ g.rut_emisor }}</td>
+                <td>{{ clp(g.n) }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="muted">Sin duplicados detectados.</p>
+      {% endif %}
+    </div>
+
+    <!-- Col 2: Data Quality por nivel (ANTES que Chequeo de Totales) -->
+    <div class="card">
+      <h3 style="margin-top:0">Data Quality</h3>
+      <p>Violaciones (total): <strong>{{ clp(r.dq.violations_total) }}</strong></p>
+      {% if r.dq.by_level %}
+        <ul class="dq-list">
+          {% for lvl, n in r.dq.by_level.items() %}
+            <li><span class="dq-badge">{{ lvl }}</span> <strong>{{ clp(n) }}</strong></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">Sin violaciones registradas.</p>
+      {% endif %}
+      <p style="margin-top:8px" class="muted">
+        Profundiza en <a href="/dq/summary">Resumen</a> o <a href="/dq/violations">Listado de violaciones</a>.
+      </p>
+    </div>
+
+    <!-- Fila 2: Chequeo de Totales, full width -->
+    <div class="card" style="grid-column:1 / -1">
+      <h3 style="margin-top:0">Chequeo de Totales</h3>
+      <p>Encabezados con diferencia suma(detalle) vs total: <strong>{{ clp(r.totals_check.mismatch_count) }}</strong></p>
+
+      {% if r.totals_check.examples %}
+        <table class="table">
+          <thead>
+            <tr><th>Documento (ID interno)</th><th>Monto total (encabezado)</th><th>Suma de ítems (detalle)</th></tr>
+          </thead>
+          <tbody>
+            {% for e in r.totals_check.examples %}
+              <tr>
+                <td><a href="/etl/dte/{{ e.header_id }}">#{{ e.header_id }}</a></td>
+                <td>$ {{ clp(e.mnt_total) }}</td>
+                <td>$ {{ clp(e.sumdet) }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="muted">Sin diferencias detectadas.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

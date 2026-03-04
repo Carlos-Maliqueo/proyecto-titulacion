@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container container--narrow">
+  <header class="page-header page-header--center">
+    <h2>Data Quality — Resumen</h2>
+  </header>
+
+  <div class="grid grid--3">
+    <div class="card">
+      <h3 style="margin-top:0">Por nivel</h3>
+      <table class="table">
+        <thead><tr><th>Nivel</th><th># Violaciones</th></tr></thead>
+        <tbody>
+          {% for r in data.by_level %}
+            <tr><td>{{ r.level }}</td><td>{{ r.n }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Por regla</h3>
+      <table class="table">
+        <thead><tr><th>Regla</th><th># Violaciones</th></tr></thead>
+        <tbody>
+          {% for r in data.by_rule %}
+            <tr><td>{{ r.code }}</td><td>{{ r.n }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Por día</h3>
+      <table class="table">
+        <thead><tr><th>Día</th><th># Violaciones</th></tr></thead>
+        <tbody>
+          {% for r in data.by_day %}
+            <tr><td>{{ r.day }}</td><td>{{ r.n }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

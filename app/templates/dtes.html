@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}DTEs{% endblock %}
+{% block content %}
+
+<style>
+  /* --- Estilos SOLO para este formulario de DTEs --- */
+  .dtes-filters{
+    display:grid;
+    grid-template-columns:repeat(12, minmax(0,1fr));
+    gap:12px;
+    align-items:end;
+    background:#fff;
+    padding:12px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.05);
+    margin-bottom:12px;
+  }
+  .dtes-filters .field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-width:160px;
+    grid-column:span 3;
+  }
+  .dtes-filters .actions{
+    grid-column:1 / -1;
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+    margin-top:4px;
+  }
+  .dtes-filters label{ font-size:.85rem; color:#374151; font-weight:600; }
+  .dtes-filters input[type="text"],
+  .dtes-filters input[type="number"],
+  .dtes-filters input[type="date"],
+  .dtes-filters select{
+    width:100%;
+    padding:8px 10px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    background:#fff;
+  }
+  .dtes-filters .hint{ margin-top:4px; font-size:.8rem; color:#6b7280; }
+  .dtes-filters input:invalid{ border-color:#ef4444; }
+
+  @media (max-width:900px){
+    .dtes-filters{ grid-template-columns:repeat(6,1fr); }
+    .dtes-filters .field, .dtes-filters .actions{ grid-column:span 6; }
+  }
+</style>
+
+
+{% macro clp(v) -%}
+  {%- if v is not none -%}{{ "{:,.0f}".format(v|float).replace(",", ".") }}{%- else -%}-{% endif -%}
+{%- endmacro %}
+
+<div class="container">
+  <header class="page-header page-header--center">
+    <h2>Documentos DTE</h2>
+  </header>
+
+  {% if request.query_params.get('parsed') %}
+    <p style="color:green;">XML procesado con éxito.</p>
+  {% endif %}
+
+  <form method="get" class="filter-bar dtes-filters" novalidate>
+    <div class="field">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" name="tipo">
+        <option value="">(todos)</option>
+        {% for t in tipos %}
+          <option value="{{ t }}" {{ 'selected' if (filters.tipo|string)==(t|string) else '' }}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="folio">Folio</label>
+      <input id="folio" type="number" name="folio" value="{{ filters.folio }}">
+    </div>
+
+    <div class="field">
+      <label for="fecha_from">Fecha desde</label>
+      <input id="fecha_from" type="date" name="fecha_from" value="{{ filters.fecha_from }}">
+    </div>
+
+    <div class="field">
+      <label for="fecha_to">Fecha hasta</label>
+      <input id="fecha_to" type="date" name="fecha_to" value="{{ filters.fecha_to }}">
+    </div>
+
+    <div class="field">
+      <label for="emisor">RUT Emisor</label>
+      <input
+        id="emisor"
+        name="emisor"
+        type="text"
+        inputmode="text"
+        placeholder="78030500-2"
+        value="{{ filters.emisor }}"
+        pattern="^\d{7,9}-[\dkK]$"
+        title="Usa formato sin puntos: 78030500-2 o 60803000-K"
+        data-rut
+      >
+    </div>
+
+    <div class="field">
+      <label for="receptor">RUT Receptor</label>
+      <input
+        id="receptor"
+        name="receptor"
+        type="text"
+        inputmode="text"
+        placeholder="60803000-K"
+        value="{{ filters.receptor }}"
+        pattern="^\d{7,9}-[\dkK]$"
+        title="Usa formato sin puntos: 78030500-2 o 60803000-K"
+        data-rut
+      >
+    </div>
+
+    <div class="field">
+      <label for="limit">Límite</label>
+      <select id="limit" name="limit">
+        {% for n in [100,200,500,1000,2000] %}
+          <option value="{{n}}" {{ 'selected' if (filters.limit|int)==n else '' }}>{{n}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn--primary" type="submit">Filtrar</button>
+      <button class="btn btn--ghost" type="submit" formaction="/etl/dtes/export" formmethod="get">Exportar Excel</button>
+    </div>
+  </form>
+
+  <script>
+  (function () {
+    const normalizeRut = (v) => {
+      if (!v) return "";
+      v = v.toString().toUpperCase().replace(/\s|\./g, "");
+      v = v.replace(/[^0-9K\-]/g, "");
+      if (!v.includes("-") && v.length > 1) v = v.slice(0, -1) + "-" + v.slice(-1);
+      if (v.includes("-")) {
+        let [body, dv] = v.split("-");
+        body = (body || "").replace(/\D/g, "");
+        dv = (dv || "").replace(/[^0-9K]/g, "");
+        v = body + (dv ? "-" + dv : "");
+      }
+      return v;
+    };
+
+    const patt = /^\d{7,9}-[\dkK]$/;
+
+    document.querySelectorAll("input[data-rut]").forEach((el) => {
+      el.addEventListener("input", (e) => {
+        e.target.value = normalizeRut(e.target.value);
+        e.target.setCustomValidity("");
+      });
+      el.addEventListener("blur", (e) => {
+        const val = e.target.value;
+        if (val && !patt.test(val)) {
+          e.target.setCustomValidity("Usa formato sin puntos: 78030500-2 o 60803000-K");
+        } else {
+          e.target.setCustomValidity("");
+        }
+      });
+    });
+
+    const form = document.querySelector("form.dtes-filters");
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        ["emisor","receptor"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = normalizeRut(el.value);
+        });
+        if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); }
+      });
+    }
+  })();
+  </script>
+
+  <div class="card" style="margin-top:12px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Tipo</th><th>Folio</th><th>Fecha</th>
+          <th>Emisor</th><th>Receptor</th><th>Monto Total</th><th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for h in rows %}
+          <tr>
+            <td>{{ h.id }}</td>
+            <td>{{ h.tipo_dte }}</td>
+            <td>{{ h.folio }}</td>
+            <td>{{ h.fecha_emision }}</td>
+            <td>{{ h.rut_emisor }}</td>
+            <td>{{ h.rut_receptor }}</td>
+            <td>$ {{ clp(h.mnt_total) }}</td>
+            <td><a href="/etl/dte/{{ h.id }}">Ver detalle</a></td>
+          </tr>
+        {% else %}
+          <tr><td colspan="8">No hay DTEs aún.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

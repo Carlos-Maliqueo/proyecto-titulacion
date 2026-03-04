@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnvioBOLETA version="1.0" xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioBOLETA_v11.xsd">
+  <SetDTE ID="SETDTEde9053cce9c94f39944cd5ab26a7edf4">
+    <Caratula version="1.0">
+      <RutEmisor>78030500-2</RutEmisor>
+      <RutEnvia>78030500-2</RutEnvia>
+      <RutReceptor>60803000-K</RutReceptor>
+      <FchResol>2013-07-31</FchResol>
+      <NroResol>74</NroResol>
+      <TmstFirmaEnv>2023-05-31T20:27:11</TmstFirmaEnv>
+      
+    <SubTotDTE><TpoDTE>39</TpoDTE><NroDTE>1</NroDTE></SubTotDTE></Caratula>
+    
+  <DTE version="1.0">
+      <Documento ID="F164483T39">
+        <Encabezado>
+          <IdDoc>
+            <TipoDTE>39</TipoDTE>
+            <Folio>164483</Folio>
+            <FchEmis>2023-05-31</FchEmis>
+            <IndServicio>3</IndServicio>
+            <FchVenc>2023-06-30</FchVenc>
+          </IdDoc>
+          <Emisor>
+            <RUTEmisor>78030500-2</RUTEmisor>
+            <RznSocEmisor>MOSAICO S.A.</RznSocEmisor>
+            <DirOrigen>Avda. del Valle Sur Nº 570 P.4 Of 402 -  - Huechurab</DirOrigen>
+          </Emisor>
+          <Receptor>
+            <RUTRecep>78030500-2</RUTRecep>
+            <RznSocRecep>MOSAICO ECOMMERCE OPER-COM</RznSocRecep>
+            <DirRecep>PANAMERICANA NORTE 19001</DirRecep>
+            <CmnaRecep>COLINA</CmnaRecep>
+            <CiudadRecep>COLINA</CiudadRecep>
+            <DirPostal>PANAMERICANA NORTE 19001</DirPostal>
+            <CmnaPostal>COLINA</CmnaPostal>
+            <CiudadPostal>COLINA</CiudadPostal>
+          </Receptor>
+          <Totales>
+            <MntNeto>3805</MntNeto>
+            <IVA>723</IVA>
+            <MntTotal>4528</MntTotal>
+          </Totales>
+        </Encabezado>
+        <Detalle>
+          <NroLinDet>1</NroLinDet>
+          <CdgItem>
+            <TpoCodigo>INT1</TpoCodigo>
+            <VlrCodigo>22PB4013006</VlrCodigo>
+          </CdgItem>
+          <NmbItem>Desague Receptáculo Acrílico Circular con Sifón New</NmbItem>
+          <DscItem>Desague Receptáculo Acrílico Circular con Sifón New</DscItem>
+          <QtyItem>1.000000</QtyItem>
+          <PrcItem>4528.000000</PrcItem>
+          <MontoItem>4528</MontoItem>
+        </Detalle>
+        <TED version="1.0">
+          <DD>
+            <RE>78030500-2</RE>
+            <TD>39</TD>
+            <F>164483</F>
+            <FE>2023-05-31</FE>
+            <RR>78030500-2</RR>
+            <RSR>MOSAICO ECOMMERCE OPER-COM</RSR>
+            <MNT>4528</MNT>
+            <IT1>Desague Receptáculo Acrílico Circular co</IT1>
+            <CAF version="1.0">
+              <DA>
+                <RE>78030500-2</RE>
+                <RS>MOSAICO S.A.</RS>
+                <TD>39</TD>
+                <RNG>
+                  <D>162001</D>
+                  <H>166000</H>
+                </RNG>
+                <FA>2023-05-08</FA>
+                <RSAPK>
+                  <M>q7aX9OVY8DJVYGwaVUSwVyGTPd4/oa7eANseRZrhmACsP6DfwsTYaizGcjOib0h/bo6+qpKsqL6SSQCjqDbTOw==</M>
+                  <E>Aw==</E>
+                </RSAPK>
+                <IDK>300</IDK>
+              </DA>
+              <FRMA algoritmo="SHA1withRSA">m8eRioD4PMbMZYueokXSALR3E+NAb/hdMKu9t30/Lr/xsD6sgQuy4ztuqfN/QynJD96AiyHqxTXFM/UOVZ9HGg==</FRMA>
+            </CAF>
+            <TSTED>2023-05-31T20:27:11</TSTED>
+          </DD>
+          <FRMT algoritmo="SHA1withRSA">l+YiP1OgtBliNwpKAU+QpC9k6wlsYZP9SaUrf8+4Kv5/WXc5LMCwyLd/iGSLlWEzOK+x7Yr0QcC1MvP61bmeLw==</FRMT>
+        </TED>
+        <TmstFirma>2023-05-31T20:27:12</TmstFirma>
+      </Documento><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI="#F164483T39"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>9BaQCV38cWWbuS8KS6wxRs0kJMc=</DigestValue></Reference></SignedInfo><SignatureValue>
+kBN7PWx2zzEeaJPNBYDRNGKaQkRLP4IS+Ugv6BONVtklOYtpvMkK3nFYAYLNMPJQ
+emSAGqXXto21Q30sn72Cfb6wCRaTvOKdzV8AYifdXd7AcJboDJb9j9gqQgo55qCP
+qRH8tOj0gcbqR+cl46Rx4MHaQ9ThTaDcuAIJtpaVIygEsmNfm8dZJ2027uQibnPx
+DYXHsFG/ge/zKshFO4aTpGUxSoNHJ2uyxMgV9OygqlGW0gMtJwnLuqqED5lxYwdF
+czJrRBrnYzLVHnojuoVuFVT46heAa58UjVsYiFIztmJa/MzAncsJ+dpMH4pf7bj9
+fqDal3GTfoS7miMW2bkQVg==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+whbW3fnarwAzCl5lhooRozvucNbRfw8wSCbJYWUtPcNjUCGST0ZhT4GsOBBfFBYN
+FMAZnL49iDRvBuAI/Fdwmw7E7uLwvi5tVwGpLxjU2MtEI/+DfkGk+tP4ms6AIE5N
+cDRsRTzm0/GjnE0ipPOlWKYhYogrKRHpJACooZcYUcjNZi6a5LD0JTYQpB47jHkT
+1+Ri0ypaFXqYEBqztcmR0WEXwv5+3hrJP6nKVfuYt6LuFx7phPVOPgbX7YTqtPDH
+uVi0lwVBGJfCFtRtwTtTAhg6I3K2T5TVdqggDqeirRcMeK2As+SGtPNnJ12q177p
+hRXApNPkTkG0h60OsbLR8w==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIHtzCCBZ+gAwIBAgIKETtgtwABAAGg6DANBgkqhkiG9w0BAQsFADCBvzELMAkG
+A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH
+EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y
+aWRhZCBDZXJ0aWZpY2Fkb3JhMR4wHAYDVQQDExVFLUNFUlRDSElMRSBDQSBGRVMg
+MDIxJjAkBgkqhkiG9w0BCQEWF3NjbGllbnRlQGUtY2VydGNoaWxlLmNsMB4XDTIy
+MDYwOTE5MDY1MloXDTI1MDYwODE5MDY1MlowgbMxCzAJBgNVBAYTAkNMMSIwIAYD
+VQQIExlNRVRST1BPTElUQU5BIERFIFNBTlRJQUdPMREwDwYDVQQHEwhTQU5USUFH
+TzEVMBMGA1UEChMMTU9TQUlDTyBTLkEuMQowCAYDVQQLDAEqMSYwJAYDVQQDEx1N
+SUdVRUwgQU5HRUwgQ0FDRVJFUyBHT05aQUxFWjEiMCAGCSqGSIb3DQEJARYTTUNB
+Q0VSRVNATU9TQUlDTy5DTDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+AMIW1t352q8AMwpeZYaKEaM77nDW0X8PMEgmyWFlLT3DY1Ahkk9GYU+BrDgQXxQW
+DRTAGZy+PYg0bwbgCPxXcJsOxO7i8L4ubVcBqS8Y1NjLRCP/g35BpPrT+JrOgCBO
+TXA0bEU85tPxo5xNIqTzpVimIWKIKykR6SQAqKGXGFHIzWYumuSw9CU2EKQeO4x5
+E9fkYtMqWhV6mBAas7XJkdFhF8L+ft4ayT+pylX7mLei7hce6YT1Tj4G1+2E6rTw
+x7lYtJcFQRiXwhbUbcE7UwIYOiNytk+U1XaoIA6noq0XDHitgLPkhrTzZyddqte+
+6YUVwKTT5E5BtIetDrGy0fMCAwEAAaOCAr0wggK5MIIBXwYDVR0gBIIBVjCCAVIw
+ggFOBggrBgEEAcNSBTCCAUAwPQYIKwYBBQUHAgEWMWh0dHBzOi8vd3d3LmUtY2Vy
+dGNoaWxlLmNsL3BvbGl0aWNhcy15LXByYWN0aWNhcy8wgf4GCCsGAQUFBwICMIHx
+HoHuAEUAbAAgAHIAZQBzAHAAbwBuAGQAZQByACAAZQBzAHQAZQAgAGYAbwByAG0A
+dQBsAGEAcgBpAG8AIABlAHMAIAB1AG4AIAByAGUAcQB1AGkAcwBpAHQAbwAgAGkA
+bgBkAGkAcwBwAGUAbgBzAGEAYgBsAGUAIABwAGEAcgBhACAAZABhAHIAIABpAG4A
+aQBjAGkAbwAgAGEAbAAgAHAAcgBvAGMAZQBzAG8AIABkAGUAIABjAGUAcgB0AGkA
+ZgBpAGMAYQBjAGkA8wBuAC4AIABQAG8AcwB0AGUAcgBpAG8AcgBtAGUAbgB0AGUA
+LDAdBgNVHQ4EFgQUiwxffdXuHvR3nVm3sjSqSWlXeVMwCwYDVR0PBAQDAgTwMCMG
+A1UdEQQcMBqgGAYIKwYBBAHBAQGgDBYKMDk4NTg5MTMtOTAfBgNVHSMEGDAWgBR0
+1iGz9FroLXy7WQZjQ+9ptDqTBDBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8vY3Js
+LmVjZXJ0Y2hpbGUuY2wvRS1DRVJUQ0hJTEVDQUZFUzAyLmNybDA9BggrBgEFBQcB
+AQQxMC8wLQYIKwYBBQUHMAGGIWh0dHA6Ly9vY3NwZmVzLmVjZXJ0Y2hpbGUuY2wv
+b2NzcDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiB3dJNl9Q6homdBoeIzm+D
+r8xgRYbS7AiGx8p9AgFkAgEHMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYKOTY5
+MjgxODAtNTANBgkqhkiG9w0BAQsFAAOCAgEAPSc/qESKstEBoe9pLZ7y3c363Cbk
+EkFjjlI0Rf8R7SNIDrlJIdX0CWc8uDIG82EWavo1Zy2Is3I3RpxMzprO8/4unft6
+DWq1M1dtlw9kVEVqWOciycJAZyS2fVJcfDd/OmEQqn5YoBHnQxGgAtLc7re/WQrI
+e91/Ks1HryJrz7vdrQn9GNZtFFSt3s5wd3BYLbvIAJSJTXpQSUlCIYaOW6Q54zpx
+fEn2/UMEnanhGWNqOKBfx0szZK1szFq7JTJ9VaZv0n2pmh9SkzgZ0ruydm285h6v
+ihMVbY68gEbpaJ4TfwEnlQ6Nu1Ui+ZQyb/Tt1RKvXQuE3L/XU0HqZTgnd9m2a7nF
+cutiRJzz+3nk7X2T87aza74TzhHkGqspP+zZst07Yb/Ual4CFtxx5Ts+eIqwnZSq
+/+zVwc3eKHQXBOKgNo1RiJIYWPSTTV/FCbWjQkMT0wwcgBNAUTNZK4+OXNjJW6PE
+9ecotto9xYQrqGeV5aw7iTP3DJrnlaZo23cuyDdB82Z8kqlqeetGVbFVcM2o4feP
+AzL9uJD43nFKW1DeJs7D81q0wNmKQUenHMDDynBLH6Zw6nmZkGnod52aEGyUy9HW
+MJV688YLNky3YeHHJ+G9lNqsHlJ1NGS4uwt7gN2ho9RHB54919+YfWisK4eGiz1s
+8k5tRisXkIz5VwY=
+</X509Certificate></X509Data></KeyInfo></Signature>
+    </DTE></SetDTE>
+  
+<Personalizados><DocPersonalizado dteID="F164483T39">
+      <campoString name="Comentarios">Based On Sales Orders 485415.</campoString>
+      <campoString name="CondPag">30 DIAS</campoString>
+      <campoString name="ComunaDestino">COLINA</campoString>
+      <campoString name="CiudadDestino">COLINA</campoString>
+      <campoString name="DireccionDestino">PANAMERICANA NORTE 19001</campoString>
+      <campoString name="Vendedor">MOSAICO</campoString>
+      <campoString name="ClienteFinal">18058450-C</campoString>
+      <campoString name="NomCliFin">DOMINIQUE CORDERO</campoString>
+      <campoString name="DirCliFin" />
+      <campoString name="CodCliente">7803050033</campoString>
+      <campoString name="DireccionDespacho">PJE. MUJERES CHILENAS - 2878 -  - MAIPU SANTIAGO</campoString>
+      <campoString name="OrdenCompra">2610556200</campoString>
+      <campoString name="impresora">3</campoString>
+      <campoString name="ContactarA">+56990926897</campoString>
+      <campoString name="Patente">CRBB-72</campoString>
+      <campoString name="NombreChofer">MATIAS DUARTE</campoString>
+      <campoString name="RutChofer">19802887-9</campoString>
+      <campoString name="DespacharA">PJE. MUJERES CHILENAS - 2878-MAIPU SANTIAGO</campoString>
+      <campoString name="FolioEnvio" />
+      <campoString name="ProcessId">c002fc7f-fd1c-447e-a8f0-fb77553d6d8d</campoString>
+      <campoNumero name="Descuento">0</campoNumero>
+      <ImpresionDetalle>
+        <PersonNroLinDet>1</PersonNroLinDet>
+        <DetPersonNUD_01>0</DetPersonNUD_01>
+        <DetPersonNUD_02>0</DetPersonNUD_02>
+      </ImpresionDetalle>
+    </DocPersonalizado></Personalizados></EnvioBOLETA>

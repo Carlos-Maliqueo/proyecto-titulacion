@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+<header class="page-header page-header--center">
+  <h2>ETL - Run Detail</h2>
+</header>
+
+<table>
+  <tbody>
+    <tr><th>Run ID</th><td style="font-family:monospace">{{ r.run_id }}</td></tr>
+    <tr><th>Job</th><td>{{ r.job }}</td></tr>
+    <tr><th>Source</th><td>{{ r.source or '-' }}</td></tr>
+    <tr><th>Inicio</th><td>{{ r.started_at }}</td></tr>
+    <tr><th>Fin</th><td>{{ r.ended_at or '-' }}</td></tr>
+    <tr><th>Status</th><td>{{ r.status }}</td></tr>
+    <tr><th>Note</th><td><pre style="white-space:pre-wrap;margin:0">{{ r.note or '-' }}</pre></td></tr>
+  </tbody>
+</table>
+
+<div class="card" style="margin-top:12px;">
+<h3 style="margin-top:1rem;">Contadores</h3>
+<table>
+  <thead><tr>
+    <th>Files total</th><th>Files ok</th><th>Files failed</th>
+    <th>Headers</th><th>Details</th><th>DQ Viol.</th>
+  </tr></thead>
+  <tbody><tr>
+    <td>{{ r.files_total }}</td>
+    <td>{{ r.files_ok }}</td>
+    <td>{{ r.files_failed }}</td>
+    <td>{{ r.headers_inserted }}</td>
+    <td>{{ r.details_inserted }}</td>
+    <td>{{ r.dq_violations }}</td>
+  </tr></tbody>
+</table>
+</div>
+
+<h3 style="margin-top:1rem;">Errores</h3>
+{% if errors and errors|length > 0 %}
+  <table>
+    <thead><tr><th>Dónde</th><th>Mensaje</th><th>File ID</th><th>Extra</th></tr></thead>
+    <tbody>
+      {% for e in errors %}
+      <tr>
+        <td>{{ e.where }}</td>
+        <td style="max-width:600px">{{ e.message }}</td>
+        <td>{{ e.file_id or '-' }}</td>
+        <td><pre style="white-space:pre-wrap;margin:0">{{ e.extra }}</pre></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Sin errores.</p>
+{% endif %}
+
+</div>
+{% endblock %}

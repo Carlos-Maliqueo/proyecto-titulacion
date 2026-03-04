@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <header class="page-header page-header--center">
+    <h2>Data Quality — Violaciones</h2>
+  </header>
+
+  <form method="get" class="filter-bar">
+    <div class="field">
+      <label for="code">Regla</label>
+      <select id="code" name="code">
+        <option value="">(todas)</option>
+        {% for c in codes %}
+          <option value="{{c}}" {{ 'selected' if filters.code==c else '' }}>{{c}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="level">Nivel</label>
+      <select id="level" name="level">
+        <option value="">(todos)</option>
+        {% for lv in levels %}
+          <option value="{{lv}}" {{ 'selected' if filters.level==lv else '' }}>{{lv}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="entity">Entidad</label>
+      <select id="entity" name="entity">
+        <option value="">(todas)</option>
+        <option value="header" {{ 'selected' if filters.entity=='header' else '' }}>header</option>
+        <option value="detail" {{ 'selected' if filters.entity=='detail' else '' }}>detail</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="date_from">Desde</label>
+      <input id="date_from" type="date" name="date_from" value="{{filters.date_from or ''}}">
+    </div>
+
+    <div class="field">
+      <label for="date_to">Hasta</label>
+      <input id="date_to" type="date" name="date_to" value="{{filters.date_to or ''}}">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn--primary" type="submit">Filtrar</button>
+    </div>
+  </form>
+
+  <div class="card" style="margin-top:12px;">
+    <p style="margin:0 0 8px">Total: {{ total }} registros</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th><th>Nivel</th><th>Regla</th><th>Entidad</th>
+          <th>Entity ID</th><th>Header</th><th>Mensaje</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+          <tr>
+            <td>{{ r.created_on }}</td>
+            <td>{{ r.rule_level }}</td>
+            <td>{{ r.rule_code }}</td>
+            <td>{{ r.entity }}</td>
+            <td>{{ r.entity_id }}</td>
+            <td>
+              {% if r.header_id %}
+                <a href="/etl/dte/{{ r.header_id }}">Ver DTE {{ r.header_id }}</a>
+              {% endif %}
+            </td>
+            <td>{{ r.message }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="actions" style="justify-content:space-between;margin-top:8px">
+      <div>
+        {% if page > 1 %}
+          <a class="btn btn--ghost" href="?page={{ page-1 }}&page_size={{page_size}}">← Anterior</a>
+        {% endif %}
+      </div>
+      <span>Página {{ page }}</span>
+      <div>
+        {% if total > page*page_size %}
+          <a class="btn btn--ghost" href="?page={{ page+1 }}&page_size={{page_size}}">Siguiente →</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

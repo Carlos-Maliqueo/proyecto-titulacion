@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}AI Items{% endblock %}
+{% block content %}
+
+  {% macro clp(v) -%}
+    {%- if v is not none -%}{{ "{:,.0f}".format(v|float).replace(",", ".") }}{%- else -%}-{% endif -%}
+  {%- endmacro %}
+
+<div class="container">
+<header class="page-header page-header--center">
+  <h2>Ítems – {{ cat }}{% if sub %} / {{ sub }}{% endif %}</h2>
+</header>
+
+<div class="card" style="grid-column:1 / -1">
+<table>
+  <thead>
+    <tr>
+      <th>Documento (ID interno)</th><th>Línea</th><th>Código</th><th>Nombre</th><th>Precio</th><th>Marca</th><th>Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td><a href="/etl/dte/{{ r.header_id }}">{{ r.header_id }}</a></td>
+      <td>{{ r.nro_linea }}</td>
+      <td>{{ r.codigo }}</td>
+      <td>{{ r.nombre_item or r.descripcion }}</td>
+      <td>$ {{ clp("%.0f"|format(r.monto_item or 0)) }}</td>
+      <td>{{ r.ai_brand or "-" }}</td>
+      <td><pre style="margin:0">{{ r.ai_attrs or {} }}</pre></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

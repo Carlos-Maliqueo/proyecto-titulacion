@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<header class="page-header page-header--center">
+  <div>
+    <h2>Auditoría - Accesos y Acciones</h2>
+  </div>
+</header>
+
+<form method="get" class="filter-bar">
+  <div class="field">
+    <label>Usuario: <input type="text" name="user" value="{{ filters.user or '' }}"></label>
+  </div>
+
+  <div class="field">
+    <label>Path: <input type="text" name="path" value="{{ filters.path or '' }}"></label>
+  </div>
+
+  <div class="field">
+    <label>Método:
+      <select name="method">
+        <option value="">(todos)</option>
+        {% for m in ['GET','POST','PUT','DELETE'] %}
+        <option value="{{m}}" {{ 'selected' if filters.method==m else '' }}>{{m}}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+
+  <div class="field">
+    <label>Status: <input type="number" name="status" value="{{ filters.status or '' }}" style="width:90px"></label>
+  </div>
+
+  <div class="field">
+    <label>Desde: <input type="date" name="date_from" value="{{ filters.date_from or '' }}"></label>
+  </div>
+  
+  <div class="field">
+    <label>Hasta: <input type="date" name="date_to" value="{{ filters.date_to or '' }}"></label>
+  </div>
+
+  <button type="submit">Filtrar</button>
+</form>
+
+<div class="card" style="margin-top:12px">
+  <p>Total: {{ total }}</p>
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Usuario</th>
+      <th>Método</th>
+      <th>Status</th>
+      <th>Path</th>
+      <th>Acción</th>
+      <th>Recurso</th>
+      <th>Res.ID</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.ts_on }}</td>
+      <td>{{ r.user or '-' }}</td>
+      <td>{{ r.method }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.path }}</td>
+      <td>{{ r.action or '-' }}</td>
+      <td>{{ r.resource or '-' }}</td>
+      <td>{{ r.resource_id or '-' }}</td>
+      <td><pre style="white-space:pre-wrap;margin:0">{{ r.extra or '' }}</pre></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="pager" style="margin-top:1rem;">
+  {% if page > 1 %}
+    <a href="?page={{ page-1 }}&page_size={{page_size}}">← Anterior</a>
+  {% endif %}
+  <span style="margin:0 1rem;">Página {{ page }}</span>
+  {% if total > page*page_size %}
+    <a href="?page={{ page+1 }}&page_size={{page_size}}">Siguiente →</a>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

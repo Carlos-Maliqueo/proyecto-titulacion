@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnvioDTE version="1.0" xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioDTE_v10.xsd">
+  <SetDTE ID="SETDTEdefbf5d2df2c42b890af1bac125d083a">
+    <Caratula version="1.0">
+      <RutEmisor>78030500-2</RutEmisor>
+      <RutEnvia>78030500-2</RutEnvia>
+      <RutReceptor>60803000-K</RutReceptor>
+      <FchResol>2013-07-31</FchResol>
+      <NroResol>74</NroResol>
+      <TmstFirmaEnv>2023-01-23T11:35:51</TmstFirmaEnv>
+      
+    <SubTotDTE><TpoDTE>61</TpoDTE><NroDTE>1</NroDTE></SubTotDTE></Caratula>
+    
+  <DTE version="1.0">
+      <Documento ID="F242609T61">
+        <Encabezado>
+          <IdDoc>
+            <TipoDTE>61</TipoDTE>
+            <Folio>242609</Folio>
+            <FchEmis>2023-01-23</FchEmis>
+            <FmaPago>2</FmaPago>
+            <TermPagoGlosa>30 DIAS</TermPagoGlosa>
+            <FchVenc>2023-01-23</FchVenc>
+          </IdDoc>
+          <Emisor>
+            <RUTEmisor>78030500-2</RUTEmisor>
+            <RznSoc>MOSAICO S.A.</RznSoc>
+            <GiroEmis>Import.Export.y Distrib.Artic.Ferreteria, Asesorias en Ingen.Econ.Financ.Gestion</GiroEmis>
+            <Telefono>7317600</Telefono>
+            <Acteco>466302</Acteco>
+            <Acteco>702000</Acteco>
+            <DirOrigen>Avda. del Valle Sur Nº 570 P.4 Of 402 -  - Huechurab</DirOrigen>
+            <CmnaOrigen>Santiago</CmnaOrigen>
+            <CdgVendedor>66</CdgVendedor>
+          </Emisor>
+          <Receptor>
+            <RUTRecep>78030500-2</RUTRecep>
+            <RznSocRecep>MOSAICO S.A.</RznSocRecep>
+            <GiroRecep>VTA.MAYOR  DE ART.DE FERR.Y MAT.DE CONST</GiroRecep>
+            <Contacto>7317600</Contacto>
+            <DirRecep>PANAMERICANA NORTE 19001</DirRecep>
+            <CmnaRecep>COLINA</CmnaRecep>
+            <CiudadRecep>COLINA</CiudadRecep>
+            <DirPostal>PANAMERICANA NORTE 19001</DirPostal>
+            <CmnaPostal>COLINA</CmnaPostal>
+            <CiudadPostal>COLINA</CiudadPostal>
+          </Receptor>
+          <Transporte>
+            <DirDest>PANAMERICANA NORTE 19001</DirDest>
+            <CmnaDest>COLINA</CmnaDest>
+            <CiudadDest>COLINA</CiudadDest>
+          </Transporte>
+          <Totales>
+            <MntNeto>23249</MntNeto>
+            <TasaIVA>19.00</TasaIVA>
+            <IVA>4417</IVA>
+            <MntTotal>27666</MntTotal>
+          </Totales>
+        </Encabezado>
+        <Detalle>
+          <NroLinDet>1</NroLinDet>
+          <CdgItem>
+            <TpoCodigo>INT1</TpoCodigo>
+            <VlrCodigo>20AA5603400</VlrCodigo>
+          </CdgItem>
+          <NmbItem>Monomando Lavaplatos Vertical Arona Cromo</NmbItem>
+          <DscItem>Monomando Lavaplatos Vertical Arona Cromo</DscItem>
+          <QtyItem>1.000000</QtyItem>
+          <PrcItem>23249.000000</PrcItem>
+          <MontoItem>23249</MontoItem>
+        </Detalle>
+        <Referencia>
+          <NroLinRef>1</NroLinRef>
+          <TpoDocRef>33</TpoDocRef>
+          <FolioRef>358426</FolioRef>
+          <FchRef>2023-01-13</FchRef>
+          <CodRef>3</CodRef>
+        </Referencia>
+        <TED version="1.0">
+          <DD>
+            <RE>78030500-2</RE>
+            <TD>61</TD>
+            <F>242609</F>
+            <FE>2023-01-23</FE>
+            <RR>78030500-2</RR>
+            <RSR>MOSAICO S.A.</RSR>
+            <MNT>27666</MNT>
+            <IT1>Monomando Lavaplatos Vertical Arona Crom</IT1>
+            <CAF version="1.0">
+              <DA>
+                <RE>78030500-2</RE>
+                <RS>MOSAICO S.A.</RS>
+                <TD>61</TD>
+                <RNG>
+                  <D>240851</D>
+                  <H>242850</H>
+                </RNG>
+                <FA>2022-10-25</FA>
+                <RSAPK>
+                  <M>z00287qJmGYezV60DohuPhLI614nDN3E4kiuliqfoGGcRXdFZh+F9HKmfetzUIfenhnYmWtz/LLqLotWBOZntw==</M>
+                  <E>Aw==</E>
+                </RSAPK>
+                <IDK>300</IDK>
+              </DA>
+              <FRMA algoritmo="SHA1withRSA">A8wFnnXVFHY1TX9k0TRR38Jqf79Xt/H7tOj2Pv9yJWVRWcjJCECn2if45BDQJmBNQMK7tWTNvu4nxXYOlNufqg==</FRMA>
+            </CAF>
+            <TSTED>2023-01-23T11:35:51</TSTED>
+          </DD>
+          <FRMT algoritmo="SHA1withRSA">gQvU2IsMn07Z2ykNjvG32iGmOP98Gfq+4py+oiV4K7TZ7vSSdY+wsOTrXqc3snsGer6CAGXwiEGtnOoFp/VilQ==</FRMT>
+        </TED>
+        <TmstFirma>2023-01-23T11:35:51</TmstFirma>
+      </Documento><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI="#F242609T61"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>84VGG9YN09aMxfRKbrJGv+UKjxA=</DigestValue></Reference></SignedInfo><SignatureValue>
+Gf0q2jJFOuMyoWuS2RQ1aYMbV65TRh60L7bVKlhJv81BkzZtMt1ntx2oD2ys1vTv
+O1GMo6BPHgd8xCnc8hV0YpvSTWuwvOJWIhs2FBMrTeTTeSqsto+Fj2r7CwfGmLG+
++T0y/99LK6rTgfPk6x/lAbKJGU1vO1XyhWZjQ00h34K3F7UAVjZlWyNrFEq++NRH
+E/kYKSb0UH84s3XuzyPnejBxaLprRSfjikz9BPvCO+NmQpnkGrdx/jFQZfkX9AeC
+h9tsKab8L9poJRp+8TSJlFErXmWPaayvCLUcP33j8NydbmAETE81iF0f15so7tni
+YsxR8QyJm4P9x0MDcoLliA==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+whbW3fnarwAzCl5lhooRozvucNbRfw8wSCbJYWUtPcNjUCGST0ZhT4GsOBBfFBYN
+FMAZnL49iDRvBuAI/Fdwmw7E7uLwvi5tVwGpLxjU2MtEI/+DfkGk+tP4ms6AIE5N
+cDRsRTzm0/GjnE0ipPOlWKYhYogrKRHpJACooZcYUcjNZi6a5LD0JTYQpB47jHkT
+1+Ri0ypaFXqYEBqztcmR0WEXwv5+3hrJP6nKVfuYt6LuFx7phPVOPgbX7YTqtPDH
+uVi0lwVBGJfCFtRtwTtTAhg6I3K2T5TVdqggDqeirRcMeK2As+SGtPNnJ12q177p
+hRXApNPkTkG0h60OsbLR8w==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIHtzCCBZ+gAwIBAgIKETtgtwABAAGg6DANBgkqhkiG9w0BAQsFADCBvzELMAkG
+A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH
+EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y
+aWRhZCBDZXJ0aWZpY2Fkb3JhMR4wHAYDVQQDExVFLUNFUlRDSElMRSBDQSBGRVMg
+MDIxJjAkBgkqhkiG9w0BCQEWF3NjbGllbnRlQGUtY2VydGNoaWxlLmNsMB4XDTIy
+MDYwOTE5MDY1MloXDTI1MDYwODE5MDY1MlowgbMxCzAJBgNVBAYTAkNMMSIwIAYD
+VQQIExlNRVRST1BPTElUQU5BIERFIFNBTlRJQUdPMREwDwYDVQQHEwhTQU5USUFH
+TzEVMBMGA1UEChMMTU9TQUlDTyBTLkEuMQowCAYDVQQLDAEqMSYwJAYDVQQDEx1N
+SUdVRUwgQU5HRUwgQ0FDRVJFUyBHT05aQUxFWjEiMCAGCSqGSIb3DQEJARYTTUNB
+Q0VSRVNATU9TQUlDTy5DTDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+AMIW1t352q8AMwpeZYaKEaM77nDW0X8PMEgmyWFlLT3DY1Ahkk9GYU+BrDgQXxQW
+DRTAGZy+PYg0bwbgCPxXcJsOxO7i8L4ubVcBqS8Y1NjLRCP/g35BpPrT+JrOgCBO
+TXA0bEU85tPxo5xNIqTzpVimIWKIKykR6SQAqKGXGFHIzWYumuSw9CU2EKQeO4x5
+E9fkYtMqWhV6mBAas7XJkdFhF8L+ft4ayT+pylX7mLei7hce6YT1Tj4G1+2E6rTw
+x7lYtJcFQRiXwhbUbcE7UwIYOiNytk+U1XaoIA6noq0XDHitgLPkhrTzZyddqte+
+6YUVwKTT5E5BtIetDrGy0fMCAwEAAaOCAr0wggK5MIIBXwYDVR0gBIIBVjCCAVIw
+ggFOBggrBgEEAcNSBTCCAUAwPQYIKwYBBQUHAgEWMWh0dHBzOi8vd3d3LmUtY2Vy
+dGNoaWxlLmNsL3BvbGl0aWNhcy15LXByYWN0aWNhcy8wgf4GCCsGAQUFBwICMIHx
+HoHuAEUAbAAgAHIAZQBzAHAAbwBuAGQAZQByACAAZQBzAHQAZQAgAGYAbwByAG0A
+dQBsAGEAcgBpAG8AIABlAHMAIAB1AG4AIAByAGUAcQB1AGkAcwBpAHQAbwAgAGkA
+bgBkAGkAcwBwAGUAbgBzAGEAYgBsAGUAIABwAGEAcgBhACAAZABhAHIAIABpAG4A
+aQBjAGkAbwAgAGEAbAAgAHAAcgBvAGMAZQBzAG8AIABkAGUAIABjAGUAcgB0AGkA
+ZgBpAGMAYQBjAGkA8wBuAC4AIABQAG8AcwB0AGUAcgBpAG8AcgBtAGUAbgB0AGUA
+LDAdBgNVHQ4EFgQUiwxffdXuHvR3nVm3sjSqSWlXeVMwCwYDVR0PBAQDAgTwMCMG
+A1UdEQQcMBqgGAYIKwYBBAHBAQGgDBYKMDk4NTg5MTMtOTAfBgNVHSMEGDAWgBR0
+1iGz9FroLXy7WQZjQ+9ptDqTBDBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8vY3Js
+LmVjZXJ0Y2hpbGUuY2wvRS1DRVJUQ0hJTEVDQUZFUzAyLmNybDA9BggrBgEFBQcB
+AQQxMC8wLQYIKwYBBQUHMAGGIWh0dHA6Ly9vY3NwZmVzLmVjZXJ0Y2hpbGUuY2wv
+b2NzcDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiB3dJNl9Q6homdBoeIzm+D
+r8xgRYbS7AiGx8p9AgFkAgEHMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYKOTY5
+MjgxODAtNTANBgkqhkiG9w0BAQsFAAOCAgEAPSc/qESKstEBoe9pLZ7y3c363Cbk
+EkFjjlI0Rf8R7SNIDrlJIdX0CWc8uDIG82EWavo1Zy2Is3I3RpxMzprO8/4unft6
+DWq1M1dtlw9kVEVqWOciycJAZyS2fVJcfDd/OmEQqn5YoBHnQxGgAtLc7re/WQrI
+e91/Ks1HryJrz7vdrQn9GNZtFFSt3s5wd3BYLbvIAJSJTXpQSUlCIYaOW6Q54zpx
+fEn2/UMEnanhGWNqOKBfx0szZK1szFq7JTJ9VaZv0n2pmh9SkzgZ0ruydm285h6v
+ihMVbY68gEbpaJ4TfwEnlQ6Nu1Ui+ZQyb/Tt1RKvXQuE3L/XU0HqZTgnd9m2a7nF
+cutiRJzz+3nk7X2T87aza74TzhHkGqspP+zZst07Yb/Ual4CFtxx5Ts+eIqwnZSq
+/+zVwc3eKHQXBOKgNo1RiJIYWPSTTV/FCbWjQkMT0wwcgBNAUTNZK4+OXNjJW6PE
+9ecotto9xYQrqGeV5aw7iTP3DJrnlaZo23cuyDdB82Z8kqlqeetGVbFVcM2o4feP
+AzL9uJD43nFKW1DeJs7D81q0wNmKQUenHMDDynBLH6Zw6nmZkGnod52aEGyUy9HW
+MJV688YLNky3YeHHJ+G9lNqsHlJ1NGS4uwt7gN2ho9RHB54919+YfWisK4eGiz1s
+8k5tRisXkIz5VwY=
+</X509Certificate></X509Data></KeyInfo></Signature>
+    </DTE></SetDTE>
+  
+<Personalizados><DocPersonalizado dteID="F242609T61">
+      <campoString name="Comentarios">ZT:10129. SERVICIO TECNICO Basado en Devoluciones 42085.</campoString>
+      <campoString name="CondPago">30 DIAS</campoString>
+      <campoString name="ComunaDestino">COLINA</campoString>
+      <campoString name="CiudadDestino">COLINA</campoString>
+      <campoString name="DireccionDestino">PANAMERICANA NORTE 19001</campoString>
+      <campoString name="Vendedor">Servicio Tecnico</campoString>
+      <campoString name="ClienteFinal">7803050008-C</campoString>
+      <campoString name="NomCliFin">MOSAICO S.A. (MUESTRAS REPARACION CUENTA T)</campoString>
+      <campoString name="DirCliFin">PANAMERICANA NORTE 19001-COLINA-COLINA</campoString>
+      <campoString name="ContactoObra" />
+      <campoString name="UTransporte" />
+      <campoString name="UDocRef">0</campoString>
+      <campoString name="CodCliente">78030500-C</campoString>
+      <campoString name="DireccionDespacho">PANAMERICANA NORTE 19001 -  - COLINA COLINA</campoString>
+      <campoString name="DocNumGD">0</campoString>
+      <campoString name="NomObra" />
+      <campoString name="Nota">42085</campoString>
+      <campoString name="OrdenCompra" />
+      <campoString name="FolioDeRef">358426</campoString>
+      <campoString name="PorcentajeDesc">0,0</campoString>
+      <campoString name="ClienteRetira">NO</campoString>
+      <campoString name="PatenteRetira" />
+      <campoString name="ChoferRetira" />
+      <campoString name="RutRetira" />
+      <campoString name="NombreChofer" />
+      <campoString name="RutChofer" />
+      <campoString name="Patente" />
+      <campoString name="DOCREF">33</campoString>
+      <campoString name="impresora">3</campoString>
+      <campoString name="ProcessId">e524800e-2e82-4baa-a365-b5bed5c3fe9e</campoString>
+      <campoNumero name="SubTotalNeto">23249</campoNumero>
+      <campoNumero name="PorcentajeDesc">0.0</campoNumero>
+      <campoNumero name="MontoDescuentoTotal">0</campoNumero>
+      <campoFecha name="FechaDeRef">2023-01-13</campoFecha>
+      <ImpresionDetalle>
+        <PersonNroLinDet>1</PersonNroLinDet>
+        <DetPersonNUD_01>0</DetPersonNUD_01>
+        <DetPersonNUD_02>0</DetPersonNUD_02>
+      </ImpresionDetalle>
+    </DocPersonalizado></Personalizados></EnvioDTE>

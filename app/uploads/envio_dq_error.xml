@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EnvioDTE xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <SetDTE ID="SET_ERR_001">
+    <Caratula version="1.0">
+      <RutEmisor>78030500-2</RutEmisor>
+      <RutEnvia>78030500-2</RutEnvia>
+      <RutReceptor>60803000-K</RutReceptor>
+      <FchResol>2013-07-31</FchResol>
+      <NroResol>74</NroResol>
+      <TmstFirmaEnv>2025-10-20T12:05:00</TmstFirmaEnv>
+      <SubTotDTE>
+        <TpoDTE>33</TpoDTE>
+        <NroDTE>1</NroDTE>
+      </SubTotDTE>
+    </Caratula>
+
+    <DTE version="1.0">
+      <Documento ID="F10002T33">
+        <Encabezado>
+          <IdDoc>
+            <TipoDTE>33</TipoDTE>
+            <Folio>10002</Folio>
+            <FchEmis>2025-10-20</FchEmis>
+          </IdDoc>
+          <Emisor>
+            <RUTEmisor>78030500-2</RUTEmisor>
+            <RznSoc>MOSAICO S.A.</RznSoc>
+          </Emisor>
+          <Receptor>
+            <RUTRecep>60803000-K</RUTRecep>
+            <RznSocRecep>SII CHILE</RznSocRecep>
+          </Receptor>
+          <Totales>
+            <!-- Aquí introducimos inconsistencias para gatillar DQ2 -->
+            <!-- Los ítems suman neto REAL: 25.000; pero ponemos 24.000 e IVA/Total que no calzan -->
+            <MntNeto>24000</MntNeto>
+            <TasaIVA>19.00</TasaIVA>
+            <IVA>4200</IVA>
+            <MntTotal>28200</MntTotal>
+          </Totales>
+        </Encabezado>
+
+        <!-- Ítem 1 correcto: 2 x 10.000 = 20.000 -->
+        <Detalle>
+          <NroLinDet>1</NroLinDet>
+          <NmbItem>Item A</NmbItem>
+          <QtyItem>2.000000</QtyItem>
+          <PrcItem>10000.000000</PrcItem>
+          <MontoItem>20000</MontoItem>
+        </Detalle>
+
+        <!-- Ítem 2 con error DQ4: 1 x 5.000 = 5.000, pero ponemos 5.500 -->
+        <Detalle>
+          <NroLinDet>2</NroLinDet>
+          <NmbItem>Item B</NmbItem>
+          <QtyItem>1.000000</QtyItem>
+          <PrcItem>5000.000000</PrcItem>
+          <MontoItem>5500</MontoItem>
+        </Detalle>
+      </Documento>
+    </DTE>
+  </SetDTE>
+</EnvioDTE>

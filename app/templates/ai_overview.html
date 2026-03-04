@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}AI Overview{% endblock %}
+{% block content %}
+
+  {% macro clp(v) -%}
+    {%- if v is not none -%}{{ "{:,.0f}".format(v|float).replace(",", ".") }}{%- else -%}-{% endif -%}
+  {%- endmacro %}
+<div class="container">
+<header class="page-header page-header--center">
+  <div>
+    <h2>AI – Taxonomía & Valor</h2>
+  </div>
+</header>
+
+<div class="kpi card">
+  {% if enriched %}<p><strong>{{ enriched }}</strong> líneas enriquecidas.</p>{% endif %}
+  <p>Tasa “Sin clasificar”: <strong>{{ "%.2f"|format(uncls_rate) }}%</strong></p>
+</div>
+
+<div class="card" style="grid-column:1 / -1">
+<h3>Mix por Categoría / Subcategoría (Top 30 por $)</h3>
+  <table>
+    <thead><tr><th>Categoría</th><th>Subcategoría</th><th>#Líneas</th><th>$ Venta</th></tr></thead>
+    <tbody>
+    {% for c, s, n, rev in mix %}
+      <tr>
+        <td>
+          <a href="/ai/items?cat={{ c|urlencode }}&sub={{ (s or '__none__')|urlencode }}">{{ c }}</a>
+        </td>
+        <td>{{ s or "-" }}</td>
+        <td>{{ n }}</td>
+        <td>$ {{ clp("%.0f"|format(rev or 0)) }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="card" style="grid-column:1 / -1">
+<h3>Top Marcas (por $)</h3>
+<table>
+  <thead><tr><th>Marca</th><th>#Líneas</th><th>$ Venta</th></tr></thead>
+  <tbody>
+  {% for b, n, rev in brands %}
+    <tr><td>{{ b or "-" }}</td><td>{{ n }}</td><td>$ {{ clp("%.0f"|format(rev or 0)) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="card" style="grid-column:1 / -1">
+<h3>Co-ocurrencias útiles (Bundles / Cross-sell)</h3>
+<table>
+  <thead><tr><th>Subcategoría A</th><th>Subcategoría B</th><th>#Facturas con ambos</th></tr></thead>
+  <tbody>
+  {% for s1, s2, n in pairs %}
+    <tr><td>{{ s1 }}</td><td>{{ s2 }}</td><td>{{ n }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="kpi card">
+<form action="/ai/enrich" method="post" style="margin-top:12px;display:inline">
+  {% if 'CONTRIBUTOR' in request.state.roles|default([]) %}
+    <button type="submit">Reenriquecer (v0.2)</button>
+  {% endif %}
+</form>
+<form action="/ai/enrich?force=1" method="post" style="margin-top:12px;display:inline">
+  {% if 'CONTRIBUTOR' in request.state.roles|default([]) %}
+    <button type="submit">Reenriquecer forzado</button>
+  {% endif %}
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% macro clp(v) -%}
+  {%- if v is not none -%}{{ "{:,.0f}".format(v|float).replace(",", ".") }}{%- else -%}-{% endif -%}
+{%- endmacro %}
+
+{% macro qty(v) -%}
+  {%- if v is not none -%}{{ "{0:.6f}".format(v|float).rstrip('0').rstrip('.') }}{%- else -%}-{% endif -%}
+{%- endmacro %}
+
+<header class="page-header page-header--center">
+  <h2>DTE #{{ hdr.id }}</h2>
+</header>
+
+<div class="container">
+  <p style="margin:6px 0 14px;">
+    <a href="/etl/dte/{{ hdr.id }}/export_pdf" class="btn btn-gosocket">Exportar PDF</a>
+  </p>
+  <section class="card card--full">
+    <h3>Encabezado</h3>
+    <ul>
+      <li>Tipo: {{ hdr.tipo_dte }} | Folio: {{ hdr.folio }} | Fecha: {{ hdr.fecha_emision }}</li>
+      <li>Emisor: {{ hdr.rut_emisor }} - {{ hdr.razon_social_emisor or '' }}</li>
+      <li>Receptor: {{ hdr.rut_receptor }} - {{ hdr.razon_social_receptor or '' }}</li>
+      <li>Monto total:$ {{ clp(hdr.mnt_total) }}</li>
+    </ul>
+  </section>
+  <section class="card card--full">
+  <h3>Detalles</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Línea</th>
+        <th>Cód.Tipo</th>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Monto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in hdr.detalles %}
+      <tr>
+        <td>{{ d.nro_linea }}</td>
+        <td>{{ d.tipo_codigo }}</td>
+        <td>{{ d.codigo }}</td>
+        <td>{{ d.nombre_item }}</td>
+        <td>{{ d.descripcion }}</td>
+        <td>{{ qty(d.cantidad) }}</td>
+        <td>$ {{ clp(d.precio_unitario) }}</td>
+        <td>$ {{ clp(d.monto_item) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </section>
+</div>
+{% endblock %}

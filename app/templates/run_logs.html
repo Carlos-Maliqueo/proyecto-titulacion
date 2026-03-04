@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<header class="page-header page-header--center">
+    <h2>ETL - Runs</h2>
+</header>
+
+{% if 'ADMIN' in roles %}
+  <form action="/ops/runs/etl_daily_now" method="post" style="margin:0 0 1rem 0; display:inline-block;">
+    <button type="submit">Ejecutar ETL ahora</button>
+  </form>
+{% endif %}
+
+
+<form method="get" class="filter-bar">
+<div class="field">
+  <label>Job:
+    <select name="job">
+      <option value="">(todos)</option>
+      {% for j in jobs %}
+        <option value="{{ j }}" {{ 'selected' if filters.job==j else '' }}>{{ j }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</div>
+
+<div class="field">
+  <label>Status:
+    <select name="status">
+      <option value="">(todos)</option>
+      {% for s in statuses %}
+        <option value="{{ s }}" {{ 'selected' if filters.status==s else '' }}>{{ s }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</div>
+
+<div class="field">
+  <label>Source:
+    <input type="text" name="source" value="{{ filters.source or '' }}" placeholder="scheduler / manual-trigger / ui">
+  </label>
+</div>
+
+<div class="field">
+  <label>Desde:
+    <input type="date" name="started_from" value="{{ filters.started_from or '' }}">
+  </label>
+</div>
+
+<div class="field">
+  <label>Hasta:
+    <input type="date" name="started_to" value="{{ filters.started_to or '' }}">
+  </label>
+</div>
+
+<div class="field">
+  <label>Page size:
+    <select name="page_size">
+      {% for n in [10,25,50,100,200] %}
+        <option value="{{n}}" {{ 'selected' if page_size==n else '' }}>{{n}}</option>
+      {% endfor %}
+    </select>
+  </label>
+</div>
+
+  <button type="submit">Filtrar</button>
+</form>
+
+<div class="card" style="margin-top:12px">
+<p>Total: {{ total }}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Status</th>
+      <th>Job</th>
+      <th>Source</th>
+      <th>Files (ok/total)</th>
+      <th>Headers</th>
+      <th>Details</th>
+      <th>DQ Viol.</th>
+      <th>Run ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.started_on }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.job }}</td>
+      <td>{{ r.source or '-' }}</td>
+      <td>{{ r.files_ok }}/{{ r.files_total }}{% if r.files_failed %} (fail: {{ r.files_failed }}){% endif %}</td>
+      <td>{{ r.headers_inserted }}</td>
+      <td>{{ r.details_inserted }}</td>
+      <td>{{ r.dq_violations }}</td>
+      <td style="font-family:monospace">
+        <a href="/ops/runs/{{ r.run_id }}">{{ r.run_id }}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

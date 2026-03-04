@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+
+{% if request.query_params.get('uploaded') == '1' %}
+  <div class="alert alert-ok">
+    ✅ Archivo “{{ request.query_params.get('fn') }}” subido con éxito.
+  </div>
+{% endif %}
+
+<header class="page-header page-header--center">
+  <div>
+    <h2 class="page-title">Bienvenido, {{ user_email }}</h2>
+    <div class="page-subtitle">Roles: {{ ", ".join(roles) }}</div>
+  </div>
+</header>
+
+<div class="container">
+  {% if can_upload %}
+  <section class="card card--full">
+    <h3 class="card-title">Subir archivo</h3>
+    <form action="/files/upload" method="post" enctype="multipart/form-data" class="form-inline">
+      <input type="file" name="up" required />
+      <button type="submit" class="btn btn-gosocket">Subir</button>
+    </form>
+  </section>
+  {% endif %}
+
+  <section class="card card--full">
+    <h3 class="card-title">Archivos</h3>
+
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Archivo</th>
+          <th>Subido por</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for f in files %}
+        <tr>
+          <td>{{ f.id }}</td>
+          <td>{{ f.filename }}</td>
+          <td>{{ f.uploader_email or "-" }}</td>
+          <td>{{ f.created_at }}</td>
+          <td>
+            {% if 'CONTRIBUTOR' in roles and f.filename.lower().endswith('.xml') %}
+              <form action="/etl/parse/{{ f.id }}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-gosocket">Procesar XML</button>
+              </form>
+            {% else %}
+              —
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      {% if files|length == 0 %}
+        <tr><td colspan="5">Sin archivos aún.</td></tr>
+      {% endif %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}

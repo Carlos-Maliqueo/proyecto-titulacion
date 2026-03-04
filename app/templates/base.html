@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}ETL{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/gosocket.css') }}">
+</head>
+<body class="app">
+  <!-- Header / Nav -->
+  <header class="app-header">
+    <div class="app-header__inner">
+      <div class="app-brand">Sistema ETL de DTE's</div>
+      {% set roles = request.state.roles or [] %}
+      <nav class="app-nav">
+        <a href="/home">Home</a>
+        <a href="/etl/dtes">DTEs</a>
+        <a href="/dq/violations">Data Quality</a>
+        <a href="/dq/summary">Data Quality (Resumen)</a>
+        <a href="/ops/consistency">Consistencia</a>
+        <a href="/ai/overview">AI</a>
+        {% if 'ADMIN' in roles %}
+          <a href="/audit">Auditoría</a>
+          <a href="/ops/runs">ETL Runs</a>
+          <a href="/dq/health">Salud DQ</a>
+        {% endif %}
+      </nav>
+      <form action="/auth/logout" method="post" class="logout-form">
+        <button type="submit" class="btn btn-light">Salir</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main class="app-main">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

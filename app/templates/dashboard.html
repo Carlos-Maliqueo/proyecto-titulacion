@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <h2>Bienvenido {{ user.email }}</h2>
+  <p>Roles: {% for r in user.roles %}{{ r.name }} {% endfor %}</p>
+
+  <h3>Archivos</h3>
+  {% if can_upload %}
+    <form action="/files/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="up" required>
+      <button type="submit">Subir archivo</button>
+    </form>
+  {% else %}
+    <p><em>Perfil de solo lectura: el botón de subida no está disponible.</em></p>
+  {% endif %}
+{% endblock %}

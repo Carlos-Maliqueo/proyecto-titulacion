@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title %}Salud de Datos (DQ){% endblock %}
+{% block content %}
+
+<div class="container">
+<header class="page-header page-header--center">
+  <div>
+    <h2>Salud de Datos (últimos 30 días)</h2>
+  </div>
+</header>
+
+<style>
+  /* Tarjetas KPI locales a esta vista */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 12px 0 16px;
+  }
+  .kpi-card {
+    border: 1px solid #ffe3d3;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    padding: 12px 14px;
+  }
+  .kpi-card .kpi-title {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  .kpi-card .kpi-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .section-sep { height: 1px; background: #000; opacity:.1; margin: 16px 0; }
+</style>
+
+{% if last %}
+  {% set badge_cls = 'bg-ok' if last.score >= 95 else ('bg-warn' if last.score >= 80 else 'bg-bad') %}
+  <!-- Card principal (Score actual) -->
+  <div style="margin:10px 0;padding:10px;border:1px solid #ddd;background:#f9f9f9;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+    <strong>Score actual:</strong>
+    <span class="dq-badge {{ badge_cls }}" style="margin-left:6px;">
+      {{ "%.2f"|format(last.score) }}
+    </span>
+    <span style="color:#666;margin-left:8px;">(día {{ last.day }})</span>
+    {% if 'ADMIN' in request.state.roles|default([]) %}
+      <form action="/dq/health/recompute" method="post" style="display:inline;margin-left:16px;">
+        <button type="submit">Recalcular hoy</button>
+      </form>
+    {% endif %}
+  </div>
+
+  <!-- KPIs como tarjetas -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-title">Promedio 7 días</div>
+      <div class="kpi-value">{{ stats.avg7 if stats.avg7 is not none else "-" }}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Promedio 30 días</div>
+      <div class="kpi-value">{{ stats.avg30 if stats.avg30 is not none else "-" }}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Δ día</div>
+      <div class="kpi-value">
+        {% if stats.delta1 is not none %}
+          {{ '+' if stats.delta1 >= 0 else '' }}{{ '%.2f'|format(stats.delta1) }}
+        {% else %}-{% endif %}
+      </div>
+    </div>
+    {% if stats.best_day %}
+      <div class="kpi-card">
+        <div class="kpi-title">Mejor día</div>
+        <div class="kpi-value">{{ '%.2f'|format(stats.best_day.score) }}</div>
+        <div style="font-size:12px;color:#666;">{{ stats.best_day.day }}</div>
+      </div>
+    {% endif %}
+    {% if stats.worst_day %}
+      <div class="kpi-card">
+        <div class="kpi-title">Peor día</div>
+        <div class="kpi-value">{{ '%.2f'|format(stats.worst_day.score) }}</div>
+        <div style="font-size:12px;color:#666;">{{ stats.worst_day.day }}</div>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Eliminado: sparklines y rangos que se veían confusos -->
+  {# Se removieron las secciones "Score (30d)", "Violaciones (30d)" y los rangos "100.0 → 101.0" #}
+
+{% else %}
+  <p>No hay snapshots todavía.</p>
+{% endif %}
+
+{% if ops_metrics %}
+  <h3 style="margin:6px 0 4px;">Operación ETL (últimos 30 días)</h3>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-title">Duración promedio</div>
+      <div class="kpi-value">
+        {{ (ops_metrics.avg_sec // 60)|int }}m {{ (ops_metrics.avg_sec % 60)|round(0)|int }}s
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Duración máxima</div>
+      <div class="kpi-value">
+        {{ (ops_metrics.max_sec // 60)|int }}m {{ (ops_metrics.max_sec % 60)|round(0)|int }}s
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">Éxito ETL</div>
+      <div class="kpi-value">
+        {% if ops_metrics.success_rate is not none %}
+          {{ ops_metrics.success_rate }}% ({{ ops_metrics.runs_ok }}/{{ ops_metrics.runs_total }})
+        {% else %}-{% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<!-- Histórico en tabla -->
+ <div class="card" style="margin-top:12px;">
+<table>
+  <thead>
+    <tr>
+      <th>Día</th>
+      <th>Headers</th>
+      <th>Details</th>
+      <th>Violaciones (total)</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.day }}</td>
+      <td>{{ r.headers }}</td>
+      <td>{{ r.details }}</td>
+      <td>{{ r.violations_total }}</td>
+      <td>{{ "%.2f"|format(r.score) }}</td>
+    </tr>
+  {% endfor %}
+  {% if rows|length == 0 %}
+    <tr><td colspan="5">Sin datos.</td></tr>
+  {% endif %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
