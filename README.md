@@ -1,7 +1,7 @@
-# 🚀 Automated DTE Data Platform
+# Automated DTE Data Platform
 ### Data Engineering & Business Intelligence System
 
-## 📌 Overview
+## Overview
 
 This project consists of an end-to-end Data Engineering platform designed to automate the extraction, processing, and analysis of Electronic Tax Documents (DTE) in XML format obtained from Gosocket.
 
@@ -9,7 +9,7 @@ The system replaces manual operational processes with automated ETL pipelines, i
 
 ---
 
-## 🧠 Problem
+## Problem
 
 Companies manually process large volumes of DTE documents, generating:
 
@@ -22,7 +22,7 @@ This platform automates the entire workflow.
 
 ---
 
-## ⚙️ Solution Architecture
+## Solution Architecture
 
 Data Flow:
 
@@ -36,7 +36,7 @@ Architecture layers:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Python
 - FastAPI
@@ -50,7 +50,7 @@ Architecture layers:
 
 ---
 
-## 🐳 Running the Project
+## Running the Project
 
 ### 1 - Clone repository:
 
@@ -72,7 +72,7 @@ The API and database will start automatically
 
 --- 
 
-## 📊 Core Features
+## Core Features
 
 - Automated XML ingestion from external source
 - ETL processing pipeline
@@ -85,7 +85,7 @@ The API and database will start automatically
 
 ---
 
-## 📈 Impact & Engineering Value
+## Impact & Engineering Value
 
 - Automation of DTE operational workflows
 - Significant reduction of manual data handling
@@ -95,27 +95,27 @@ The API and database will start automatically
 
 ---
 
-## 🖼️ System Architecture Diagram
+## System Architecture Diagram
 ![Architecture](docs/arquitectura_conceptual.png)
 ![Architecture](docs/arquitectura_c4_contenedores.png)
 
 ---
 
-## 📊 Dashboard Preview
+## Dashboard Preview
 ![Dashboard](docs/pbi_pagina_ventas.png)
 ![Dashboard](docs/pbi_pagina_dq.png)
 ![Dashboard](docs/pbi_pagina_ops.png)
 
 ---
 
-## 🔐 Data Quality & Governance
+## Data Quality & Governance
 - Structured RAW → STAGE → CURATED pipeline
 - Controlled transformation logic
 - Reprocessing safety (idempotent ETL)
 - Versioned database schema (Alembic migrations)
 
 ---
-## 👨‍💻 Author
+## Author
 Carlos Maliqueo
 Civil Engineer in Computer Science & Telecommunications
 Universidad Diego Portales
